@@ -1,14 +1,14 @@
 ////////
 // 
-//	boardTest/top.v
+//	top.v
 //
-//	Board Test Starting Code
+//	Board Test Code
 //	
 //	Simple binary counter and test circuit
 //
 //	Chuck Pateros
 //	University of San Diego
-//	19-Sep-2021
+//	2022-08-18
 //
 ////////
 
@@ -16,16 +16,10 @@
 // look in upduino3.pcf for the mapping of signals to UPduino board pins
 module top (
     input CLK,         // 12MHz clock provided by UPduino board
-    output [6:0] SEG,  // seven-segment display segments (active high)
-    output [3:0] COMM, // seven-segment display common cathodes (active low) 
     output [3:0] DBG,  // LEDs installed into breadboard (active high)
     output [2:0] RGB   // RGB LED is built into UPduino board (active low)
 );
  
-    // drive board LEDs
-    assign SEG = ~7'b1111111;
-//    assign COMM = 4'b0000;
-//    assign RGB = 3'b111;
 
     ////////
     // make a simple counter circuit 
@@ -46,7 +40,6 @@ module top (
 
     // Use debug LEDs to show count
     assign DBG = counter[26:23];
-    assign COMM = counter[25:22];
     
 endmodule
 
